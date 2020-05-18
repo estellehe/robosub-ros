@@ -14,7 +14,7 @@ public:
     MultiplexedObject(Adafruit_PWMServoDriver *);
     ~MultiplexedObject();
     void attach(int);
-    void detach(int);
+    void detach();
     void writeMicroseconds(int secs);
     virtual void initialise() = 0;
     virtual void run(int) = 0;

@@ -7,19 +7,19 @@ MultiplexedObject::MultiplexedObject(Adafruit_PWMServoDriver *_multiplexer):mult
 }
 
 MultiplexedObject::~MultiplexedObject(){
-    detach(num);
+    detach();
 }
 
 void MultiplexedObject::attach(int _num){
     // make sure it isn't trying to run multiple pins
     if(attached)
-        detach(num);
+        detach();
     attached = true;
     num = _num;
     multiplexer->setPWMFreq(250);
 }
 
-void MultiplexedObject::detach(int _num){
+void MultiplexedObject::detach(){
     attached = false;
     multiplexer->setPin(num,0,false);
 }
