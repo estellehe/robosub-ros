@@ -11,7 +11,7 @@ protected:
     Adafruit_PWMServoDriver *multiplexer;
     bool attached;
 public:
-    MultiplexedObject(Adafruit_PWMServoDriver *);
+    MultiplexedObject(Adafruit_PWMServoDriver *, int);
     ~MultiplexedObject();
     void attach(int);
     void detach();

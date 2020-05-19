@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include "MultiplexedObject.h"
 
-MultiplexedObject::MultiplexedObject(Adafruit_PWMServoDriver *_multiplexer):multiplexer(_multiplexer){
+MultiplexedObject::MultiplexedObject(Adafruit_PWMServoDriver *_multiplexer, int _num):multiplexer(_multiplexer), num(_num){
     attached = false;
 }
 
@@ -21,12 +21,11 @@ void MultiplexedObject::attach(int _num){
 
 void MultiplexedObject::detach(){
     attached = false;
-    multiplexer->setPin(num,0,false);
+    multiplexer->setPin(num, 0, false);
 }
 
 void MultiplexedObject::writeMicroseconds(int secs){
-    if (attached)
-    {
+    if (attached){
         int mappedPulse = map(secs, 1100, 1900, 1000, 1720);
         multiplexer->setPin(num, mappedPulse, false);
     }
